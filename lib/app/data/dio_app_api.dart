@@ -106,5 +106,10 @@ class DioAppApi implements AppApi {
   Future fetchQuizs() {
     return dio.get("/data/quizs");
   }
+
+  @override
+  Future createQuiz(String name) {
+   return dio.post("/data/quizs", data: {"name": name, "status": "edit"});
+  }
   
 }

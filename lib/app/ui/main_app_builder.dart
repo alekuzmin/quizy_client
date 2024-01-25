@@ -12,19 +12,37 @@ import '../domain/app_builder.dart';
 class MainAppBuilder implements AppBuilder {
   @override
   Widget buildApp() {
-    return const _GlobalProviders(child: MaterialApp(home: RootScreen(), debugShowCheckedModeBanner: false,));
+    return _GlobalProviders(
+        child: MaterialApp(
+      home: const RootScreen(),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          primary: Colors.blue,
+          secondary: Colors.lightBlueAccent,
+          tertiary: Colors.white,
+          brightness: Brightness.light,
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    ));
   }
 }
 
 class _GlobalProviders extends StatelessWidget {
   const _GlobalProviders({required this.child});
+
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
       BlocProvider(create: (context) => locator.get<AuthCubit>()),
-      BlocProvider(create: (context) => QuizCubit(locator.get<QuizRepository>())..fetchPosts()),
+      BlocProvider(
+          create: (context) =>
+              QuizCubit(locator.get<QuizRepository>(), locator.get<AuthCubit>())
+                ..fetchQuizs()),
     ], child: child);
   }
 }

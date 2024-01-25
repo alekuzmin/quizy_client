@@ -15,16 +15,22 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            iconTheme: IconThemeData(
+              color: Theme.of(context).colorScheme.onTertiary
+            ),
             title:
-                const Text("Настройки", style: TextStyle(color: Colors.white)),
-            backgroundColor: Colors.blueAccent,
+                Text("Настройки",
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onTertiary,)),
             actions: [
               IconButton(
                   onPressed: () {
                     Navigator.pop(context);
                     context.read<AuthCubit>().logOut();
                   },
-                  icon: const Icon(Icons.exit_to_app, color: Colors.white)),
+                  icon: Icon(Icons.exit_to_app,
+                      color: Theme.of(context).colorScheme.onTertiary)),
             ]),
         body: Form(
           key: formKey,
@@ -89,7 +95,6 @@ class SettingsScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 15),
                           decoration: BoxDecoration(
-                              color: Colors.white,
                               border: Border.all(color: Colors.black87),
                               borderRadius: BorderRadius.circular(15)),
                           child: const DropdownButtonRole(),
@@ -114,12 +119,12 @@ class SettingsScreen extends StatelessWidget {
                         },
                         style: ButtonStyle(
                             backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.blueAccent),
+                                MaterialStateProperty.all<Color>(Theme.of(context).colorScheme.primary),
                             fixedSize: MaterialStateProperty.all<Size>(
                                 const Size(double.maxFinite, 50))),
-                        child: const Text(
+                        child: Text(
                           "Сохранить",
-                          style: TextStyle(fontSize: 18, color: Colors.white),
+                          style: TextStyle(fontSize: 18, color: Theme.of(context).colorScheme.onTertiary,),
                         ),
                       ),
                       const SizedBox(height: 16),

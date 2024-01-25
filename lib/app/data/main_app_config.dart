@@ -6,7 +6,7 @@ import '../domain/app_config.dart';
 @prod
 class ProdAppConfig implements AppConfig{
   @override
-  String get baseUrl => "http://86.110.194.244";
+  String get baseUrl => "https://snoozee.ru/api";
 
   @override
   String get host => Environment.prod;

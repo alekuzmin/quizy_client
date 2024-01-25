@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizy/feature/quiz/domain/entity/quiz/quiz_entity.dart';
 
@@ -10,10 +9,13 @@ class QuizItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.secondary,
       child: Column(
         children: [
-          Text(quizEntity.name),
+          Text(quizEntity.name,
+      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+        color: Theme.of(context).colorScheme.onPrimary,)
+          ),
         ],
       ),
     );

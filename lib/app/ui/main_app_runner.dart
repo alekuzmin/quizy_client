@@ -21,16 +21,28 @@ class MainAppRunner implements AppRunner {
 
   @override
   Future<void> run(AppBuilder appBuilder) async {
-    final storage = await HydratedStorage.build(
-        storageDirectory: kIsWeb
-            ? HydratedStorage.webStorageDirectory
-            : await getApplicationDocumentsDirectory(),);
-    HydratedBlocOverrides.runZoned(
-      () async {
-        await preloadData();
-        runApp(appBuilder.buildApp());
-      },
-      storage: storage,
+    //WidgetsFlutterBinding.ensureInitialized();
+    HydratedBloc.storage = await HydratedStorage.build(
+      storageDirectory: kIsWeb
+          ? HydratedStorage.webStorageDirectory
+          : await getApplicationDocumentsDirectory(),
     );
+    await preloadData();
+    runApp(appBuilder.buildApp());
   }
+
+  // @override
+  // Future<void> run(AppBuilder appBuilder) async {
+  //   final storage = await HydratedStorage.build(
+  //       storageDirectory: kIsWeb
+  //           ? HydratedStorage.webStorageDirectory
+  //           : await getApplicationDocumentsDirectory(),);
+  //   HydratedBlocOverrides.runZoned(
+  //     () async {
+  //       await preloadData();
+  //       runApp(appBuilder.buildApp());
+  //     },
+  //     storage: storage,
+  //   );
+  // }
 }

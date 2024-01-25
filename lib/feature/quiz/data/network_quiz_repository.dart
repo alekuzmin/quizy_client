@@ -19,4 +19,14 @@ class NetworkQuizRepository implements QuizRepository{
     }
   }
 
+  @override
+  Future<String> createQuiz(String name) async {
+    try{
+      final response = await api.createQuiz(name);
+      return response.data["message"];
+    } catch (_){
+      rethrow;
+    }
+  }
+
 }

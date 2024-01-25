@@ -17,9 +17,13 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Авторизация", style: TextStyle(
-              color: Colors.white),),
-          backgroundColor: Colors.blueAccent,
+          title:
+          Text("Авторизация",
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary,)
+            //style: TextStyle(color: Theme.of(context).colorScheme.secondary),
+          ),
+          backgroundColor: Theme.of(context).colorScheme.primary,
         ),
         body: Form(
             key: formKey,
@@ -45,7 +49,6 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () {
                         if (formKey.currentState?.validate() == true) {
                           _onTapToSignIn(context.read<AuthCubit>());
-                          print("Ok");
                         }
                       },
                     ),

@@ -28,10 +28,12 @@ class AuthInterceptor extends QueuedInterceptor {
             .fetch(err.requestOptions);
         return handler.resolve(request);
       } catch (_) {
-        super.onError(err, handler);
+        //super.onError(err, handler);
+        return null;
       }
     } else {
-      super.onError(err, handler);
+      //super.onError(err, handler);
+      return null;
     }
   }
 }

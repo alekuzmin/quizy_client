@@ -4,26 +4,25 @@ class AppTextButton extends StatelessWidget {
   const AppTextButton(
       {super.key,
       required this.onPressed,
-      required this.text,
-      this.backgroundColor = Colors.blueAccent});
+      required this.text,});
 
 
   final VoidCallback onPressed;
   final String text;
-  final Color backgroundColor;
+
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(backgroundColor),
+        foregroundColor: MaterialStateProperty.all<Color>(Theme.of(context).colorScheme.secondary),
+        backgroundColor: MaterialStateProperty.all<Color>(Theme.of(context).colorScheme.primary),
         fixedSize: MaterialStateProperty.all<Size>(
               const Size(double.maxFinite, 50))),
       child: Text(text,
-          style: const TextStyle(
-            fontSize: 18,
-            color: Colors.white),
+        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+          color: Theme.of(context).colorScheme.onPrimary,),
       ),
     );
   }
