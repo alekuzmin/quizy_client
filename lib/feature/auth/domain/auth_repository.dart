@@ -5,7 +5,7 @@ abstract class AuthRepository{
     required String email,
     required String firstName,
     required String lastName,
-    required String middleName,
+    String? middleName,
     required String role
 });
 

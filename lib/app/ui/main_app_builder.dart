@@ -10,6 +10,9 @@ import '../di/init_di.dart';
 import '../domain/app_builder.dart';
 
 class MainAppBuilder implements AppBuilder {
+
+  bool isSwitched = false;
+
   @override
   Widget buildApp() {
     return _GlobalProviders(

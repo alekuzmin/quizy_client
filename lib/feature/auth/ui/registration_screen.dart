@@ -63,9 +63,14 @@ class RegistrationScreen extends StatelessWidget {
                           labelText: "имя",
                         ),
                         const SizedBox(height: 16),
-                        AppTextField(
+                        TextFormField(
+                          obscureText: false,
+                          maxLines: 1,
                           controller: controllerMiddleName,
-                          labelText: "отчество",
+                          decoration: InputDecoration(
+                              labelText: "отчество",
+                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(15))
+                          ),
                         ),
                         const SizedBox(height: 16),
                         Center(

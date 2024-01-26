@@ -50,11 +50,19 @@ class NetworkAuthRepository implements AuthRepository {
     required String email,
     required String firstName,
     required String lastName,
-    required String middleName,
+    String? middleName,
     required String role,
   }) async {
     try {
-      final response = await api.signUp(password: password, login: login, email: email, firstName: firstName, lastName: lastName, middleName: middleName, role: role);
+      final response = await api.signUp(
+        password: password,
+        login: login,
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        middleName: middleName ?? "",
+        role: role,
+      );
       return UserDto.fromJson(response.data["data"]).toEntity();
     } catch (_) {
       rethrow;
@@ -77,7 +85,12 @@ class NetworkAuthRepository implements AuthRepository {
     String? role,
   }) async {
     try {
-      final response = await api.updateUser(email: email, firstName: firstName, lastName: lastName, middleName: middleName, role: role);
+      final response = await api.updateUser(
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
+          middleName: middleName,
+          role: role);
       return UserDto.fromJson(response.data["data"]).toEntity();
     } catch (_) {
       rethrow;
