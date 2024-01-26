@@ -10,6 +10,7 @@ class QuizItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Theme.of(context).colorScheme.secondary,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       child: Column(
         children: [
           Text(quizEntity.name,

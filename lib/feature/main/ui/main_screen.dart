@@ -13,17 +13,15 @@ class MainScreen extends StatelessWidget {
 
   final UserEntity userEntity;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
-            "Мои опросы",
-        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-              color: Theme.of(context).colorScheme.onPrimary,
-          )),
-          backgroundColor:Theme.of(context).colorScheme.primary,
+          title: Text("Мои опросы",
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  )),
+          backgroundColor: Theme.of(context).colorScheme.primary,
           actions: [
             IconButton(
                 onPressed: () {
@@ -43,35 +41,87 @@ class MainScreen extends StatelessWidget {
                 )),
           ],
         ),
-        body: Center(
-            child: Column(children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: IconButton(
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) => AppDialog(
-                          value1: "Название опроса",
-                          onPressed: (value1) {
-                            context.read<QuizCubit>().createQuiz(value1);
-                          }));
-                },
-                icon: CircleAvatar(
-                  backgroundColor: Colors.blue,
-                  child: Text(
-                    "+",
-                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                    //style: TextStyle(
-                       // fontWeight: FontWeight.bold, color: Colors.white),
-                    )),
-                )),
+        body: Container(
+          alignment: Alignment.topCenter,
+          padding: const EdgeInsets.all(16),
+          //color: Colors.black.withOpacity(0.15),
+          child: Material(
+            //color: Colors.white,
+            elevation: 24,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8))),
+            child: Padding(
+              padding: const EdgeInsets.all(4),
+              child: SingleChildScrollView(
+                //scrollDirection: Axis.horizontal,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    Align(
+                      alignment: AlignmentDirectional.center,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: OverflowBar(
+                          spacing: 1,
+                          overflowAlignment: OverflowBarAlignment.start,
+                          children: <Widget>[
+                            TextButton(
+                                onPressed: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) => AppDialog(
+                                          value1: "Название опроса",
+                                          onPressed: (value1) {
+                                            context
+                                                .read<QuizCubit>()
+                                                .createQuiz(value1);
+                                          }));
+                                },
+                                style: TextButton.styleFrom(
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.primary,
+                                  shape:
+                                      const CircleBorder(side: BorderSide.none),
+                                ),
+                                child: Text(
+                                  '+',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
+                                      .copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary,
+                                      ),
+                                )),
+                            const TextButton(
+                              onPressed: null,
+                              child: Text('ВСЕ'),
+                            ),
+                            TextButton(
+                              child: const Text('ОЖИДАЮТ'),
+                              onPressed: () {},
+                            ),
+                            TextButton(
+                              child: const Text('АКТИВНЫЕ'),
+                              onPressed: () {},
+                            ),
+                            TextButton(
+                              child: const Text('ЗАВЕРШЕННЫЕ'),
+                              onPressed: () {},
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const QuizList(),
+                  ],
+                ),
+              ),
+            ),
           ),
-
-          const SizedBox(
-              height: 800,
-              child: QuizList()),
-        ])));
+        )
+    );
   }
 }
