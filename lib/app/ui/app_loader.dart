@@ -7,7 +7,9 @@ class AppLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: CircularProgressIndicator(backgroundColor: Colors.blue),
+        child: CircularProgressIndicator(
+            //backgroundColor: Colors.white,
+        ),
       ),
     );
   }

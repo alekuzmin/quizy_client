@@ -19,7 +19,14 @@ class AppTextButton extends StatelessWidget {
         foregroundColor: MaterialStateProperty.all<Color>(Theme.of(context).colorScheme.secondary),
         backgroundColor: MaterialStateProperty.all<Color>(Theme.of(context).colorScheme.primary),
         fixedSize: MaterialStateProperty.all<Size>(
-              const Size(double.maxFinite, 50))),
+              const Size(double.maxFinite, 50)),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  //side: BorderSide(color: Colors.red)
+              )
+          )
+      ),
       child: Text(text,
         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
           color: Theme.of(context).colorScheme.onPrimary,),

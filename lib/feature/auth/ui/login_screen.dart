@@ -18,51 +18,69 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title:
-          Text("Авторизация",
+          Text("Q U I Z Y",
             style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: Theme.of(context).colorScheme.onPrimary,)
             //style: TextStyle(color: Theme.of(context).colorScheme.secondary),
           ),
           backgroundColor: Theme.of(context).colorScheme.primary,
         ),
-        body: Form(
-            key: formKey,
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    AppTextField(
-                      controller: controllerLogin,
-                      labelText: "логин",
+        body: Center(
+          child: Container(
+            //alignment: Alignment.centerRight,
+            padding: const EdgeInsets.all(16),
+            width: 350,
+            height: 380,
+            child: Material(
+              elevation: 24,
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8))),
+              child: Form(
+                  key: formKey,
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 30, right: 30),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text(
+                            "Вход",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 16),
+                          AppTextField(
+                            controller: controllerLogin,
+                            labelText: "логин",
+                          ),
+                          const SizedBox(height: 16),
+                          AppTextField(
+                            obscureText: true,
+                            controller: controllerPassword,
+                            labelText: "пароль",
+                          ),
+                          const SizedBox(height: 16),
+                          AppTextButton(
+                            text: "Далее",
+                            onPressed: () {
+                              if (formKey.currentState?.validate() == true) {
+                                _onTapToSignIn(context.read<AuthCubit>());
+                              }
+                            },
+                          ),
+                          const SizedBox(height: 16),
+                          AppTextButton(
+                              onPressed: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => RegistrationScreen()));
+                              },
+                              text: "Регистрация"),
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 16),
-                    AppTextField(
-                      obscureText: true,
-                      controller: controllerPassword,
-                      labelText: "пароль",
-                    ),
-                    const SizedBox(height: 16),
-                    AppTextButton(
-                      text: "Войти",
-                      onPressed: () {
-                        if (formKey.currentState?.validate() == true) {
-                          _onTapToSignIn(context.read<AuthCubit>());
-                        }
-                      },
-                    ),
-                    const SizedBox(height: 16),
-                    AppTextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => RegistrationScreen()));
-                        },
-                        text: "Регистрация")
-                  ],
-                ),
-              ),
-            )));
+                  )),
+            ),
+          ),
+        ));
   }
 
   void _onTapToSignIn(AuthCubit authCubit) => authCubit.signIn(

@@ -44,7 +44,7 @@ class AuthBuilder extends StatelessWidget {
 
   void _showSnackBar(BuildContext context, ErrorEntity response) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        //duration: const Duration(seconds: 5),
+        duration: const Duration(seconds: 5),
         content: SingleChildScrollView(
           child: Text(
               maxLines: 5, response.message),

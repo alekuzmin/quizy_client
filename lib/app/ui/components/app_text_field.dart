@@ -17,7 +17,7 @@ class AppTextField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
           labelText: labelText,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15))
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8  ))
       ),
     );
   }
