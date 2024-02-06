@@ -35,49 +35,52 @@ class LoginScreen extends StatelessWidget {
               elevation: 24,
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8))),
-              child: Form(
-                  key: formKey,
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 30, right: 30),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Text(
-                            "Вход",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(height: 16),
-                          AppTextField(
-                            controller: controllerLogin,
-                            labelText: "логин",
-                          ),
-                          const SizedBox(height: 16),
-                          AppTextField(
-                            obscureText: true,
-                            controller: controllerPassword,
-                            labelText: "пароль",
-                          ),
-                          const SizedBox(height: 16),
-                          AppTextButton(
-                            text: "Далее",
-                            onPressed: () {
-                              if (formKey.currentState?.validate() == true) {
-                                _onTapToSignIn(context.read<AuthCubit>());
-                              }
-                            },
-                          ),
-                          const SizedBox(height: 16),
-                          AppTextButton(
+              child: SingleChildScrollView(
+                child: Form(
+                    key: formKey,
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 30, right: 30),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const SizedBox(height: 16),
+                            const Text(
+                              "Вход",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 16),
+                            AppTextField(
+                              controller: controllerLogin,
+                              labelText: "логин",
+                            ),
+                            const SizedBox(height: 16),
+                            AppTextField(
+                              obscureText: true,
+                              controller: controllerPassword,
+                              labelText: "пароль",
+                            ),
+                            const SizedBox(height: 16),
+                            AppTextButton(
+                              text: "Далее",
                               onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => RegistrationScreen()));
+                                if (formKey.currentState?.validate() == true) {
+                                  _onTapToSignIn(context.read<AuthCubit>());
+                                }
                               },
-                              text: "Регистрация"),
-                        ],
+                            ),
+                            const SizedBox(height: 16),
+                            AppTextButton(
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => RegistrationScreen()));
+                                },
+                                text: "Регистрация"),
+                          ],
+                        ),
                       ),
-                    ),
-                  )),
+                    )),
+              ),
             ),
           ),
         ));
