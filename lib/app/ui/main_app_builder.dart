@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizy/app/ui/root_screen.dart';
-import 'package:quizy/feature/auth/domain/auth_repository.dart';
 import 'package:quizy/feature/quiz/domain/quiz_repository.dart';
 import 'package:quizy/feature/quiz/domain/state/quiz_cubit.dart';
 
@@ -19,6 +18,7 @@ class MainAppBuilder implements AppBuilder {
         child: MaterialApp(
       home: const RootScreen(),
       theme: ThemeData(
+        primaryIconTheme: const IconThemeData(color: Colors.red),
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.blue,

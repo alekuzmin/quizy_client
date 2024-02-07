@@ -9,16 +9,46 @@ class QuizItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Theme.of(context).colorScheme.secondary,
+      //color: Theme.of(context).colorScheme.secondary,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-      child: Column(
+      child: Row(
+        //mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(quizEntity.name,
-      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-        color: Theme.of(context).colorScheme.onPrimary,)
+          Row(
+            //mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                  child: Text(quizEntity.name,
+                            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              color: Colors.black54,)
+                  ),
+              ),
+            ],
           ),
+          Row(
+            //mainAxisSize: MainAxisSize.min,
+              children: [
+                  IconButton(
+                    icon: Icon(quizEntity.status != "active" ? Icons.play_arrow : Icons.pause,
+                        color: Colors.redAccent),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () {},
+                  ),
+                IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () {},
+                  ),
+                ]
+          ),
+
         ],
       ),
     );
   }
+
 }
