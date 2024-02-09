@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizy/feature/quiz/domain/entity/quiz/quiz_entity.dart';
-import 'package:quizy/feature/quiz/domain/state/quiz_cubit.dart';
 import 'package:quizy/feature/quiz/ui/detail_quiz_screen.dart';
 
 class QuizItem extends StatelessWidget {

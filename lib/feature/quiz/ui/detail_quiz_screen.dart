@@ -9,7 +9,6 @@ import 'package:quizy/feature/quiz/domain/entity/quiz/quiz_entity.dart';
 import 'package:quizy/feature/quiz/domain/quiz_repository.dart';
 import 'package:quizy/feature/quiz/domain/state/detail_quiz/detail_quiz_cubit.dart';
 
-import '../../../app/ui/components/app_drawer.dart';
 import '../domain/state/quiz_cubit.dart';
 
 class DetailQuizScreen extends StatelessWidget {
