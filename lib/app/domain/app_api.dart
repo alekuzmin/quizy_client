@@ -40,6 +40,9 @@ abstract class AppApi{
   Future<dynamic> fetch(RequestOptions requestOptions);
 
   Future<dynamic> fetchQuizs();
+  Future<dynamic> fetchQuiz(String id);
 
   Future<dynamic> createQuiz(String name);
+
+  Future<dynamic> deleteQuiz(String id);
 }

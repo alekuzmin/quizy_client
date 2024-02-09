@@ -78,4 +78,5 @@ class QuizCubit extends HydratedCubit<QuizState> {
     authSubscription.cancel();
     return super.close();
   }
+
 }
