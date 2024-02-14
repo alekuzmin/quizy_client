@@ -44,7 +44,7 @@ class _AppDialogState extends State<AppDialog> {
                     Navigator.pop(context);
                     widget.onPressed(val1Controller.text);
                   }
-                }, text: "Применить",)
+                }, text: "Добавить",)
               ],
             ),
           ),

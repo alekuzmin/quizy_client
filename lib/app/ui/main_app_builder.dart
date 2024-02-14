@@ -27,7 +27,13 @@ class MainAppBuilder implements AppBuilder {
           tertiary: Colors.white,
           brightness: Brightness.light,
         ),
+          tabBarTheme: const TabBarTheme(
+              labelColor: Colors.black54,
+              labelStyle: TextStyle(color: Colors.black54), // color for text
+              indicator: UnderlineTabIndicator(borderSide: BorderSide(color: Colors.blue, width: 4),)
+          ),
       ),
+
       debugShowCheckedModeBanner: false,
     ));
   }
