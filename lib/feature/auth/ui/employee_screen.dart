@@ -83,10 +83,6 @@ class EmployeeScreen extends StatelessWidget {
                                 //mainAxisSize: MainAxisSize.min,
                                 children: [
                                   IconButton(
-                                    icon: const Icon(Icons.edit),
-                                    onPressed: () {},
-                                  ),
-                                  IconButton(
                                     icon: const Icon(Icons.delete),
                                     onPressed: () {},
                                   ),
