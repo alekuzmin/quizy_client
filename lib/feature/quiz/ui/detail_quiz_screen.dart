@@ -10,6 +10,7 @@ import 'package:quizy/feature/quiz/domain/quiz_repository.dart';
 import 'package:quizy/feature/quiz/domain/state/detail_quiz/detail_quiz_cubit.dart';
 import 'package:quizy/feature/quiz/ui/detail_quiz_tab.dart';
 import 'package:quizy/feature/quiz/ui/employee_quiz_tab.dart';
+import 'package:quizy/feature/quiz/ui/scheduler_quiz_tab.dart';
 
 import '../domain/state/quiz_cubit.dart';
 
@@ -105,6 +106,10 @@ class _DetailQuizItem extends StatelessWidget {
                     onPressed: () {},
                   ),
                   IconButton(
+                    icon: const Icon(Icons.save),
+                    onPressed: () {},
+                  ),
+                  IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () {
                       context.read<DetailQuizCubit>().deleteQuiz().then((_) {
@@ -119,7 +124,7 @@ class _DetailQuizItem extends StatelessWidget {
                 children: [
                   DetailQuizTab(),
                   EmployeeQuizTab(),
-                  Icon(Icons.directions_bike),
+                  SchedulerQuizTab(),
                   Icon(Icons.directions_bike)
                 ],
               ),

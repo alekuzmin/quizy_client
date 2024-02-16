@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class EmployeeScreen extends StatelessWidget {
   const EmployeeScreen({super.key});
 
@@ -35,27 +34,35 @@ class EmployeeScreen extends StatelessWidget {
                           onPressed: () {
                             showDialog(
                                 context: context,
-                                builder: (BuildContext context)
-                            {
-                              return AlertDialog(
-                                title: const Text("Новая группа сотрудников"),
-                                content: const TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Введите название группы",
-                                  ),
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text(""),
+                                    content: const TextField(
+                                      decoration: InputDecoration(
+                                        hintText: "Введите название группы",
+                                      ),
+                                    ),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text("Добавить"),
+                                      ),
+                                    ],
+                                  );
+                                });
+                          },
+                          child: Text(
+                            '+ Добавить группу',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary,
                                 ),
-                                actions: <Widget>[
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Text("Добавить"),
-                                  ),
-                                ],
-                              );
-                            }
-                            );
-                          }, child: const Text("+ Добавить группу")),
+                          )),
                       Card(
                         //color: Theme.of(context).colorScheme.secondary,
                         shape: RoundedRectangleBorder(
@@ -79,14 +86,6 @@ class EmployeeScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Row(
-                                //mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  IconButton(
-                                    icon: const Icon(Icons.delete),
-                                    onPressed: () {},
-                                  ),
-                                ]),
                           ],
                         ),
                       ),
@@ -113,18 +112,6 @@ class EmployeeScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Row(
-                                //mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  IconButton(
-                                    icon: const Icon(Icons.edit),
-                                    onPressed: () {},
-                                  ),
-                                  IconButton(
-                                    icon: const Icon(Icons.delete),
-                                    onPressed: () {},
-                                  ),
-                                ]),
                           ],
                         ),
                       ),

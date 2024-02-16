@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:intl/intl_standalone.dart' if (dart.library.html) 'package:intl/intl_browser.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
 import 'package:path_provider/path_provider.dart';
 
 import '../di/init_di.dart';
@@ -16,6 +19,9 @@ class MainAppRunner implements AppRunner {
   Future<void> preloadData() async {
     //init app
     initDi(env);
+    initializeDateFormatting();
+    WidgetsFlutterBinding.ensureInitialized();
+    await findSystemLocale();
     //init config
   }
 
