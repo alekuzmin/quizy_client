@@ -30,39 +30,49 @@ class EmployeeScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: <Widget>[
-                      TextButton(
-                          onPressed: () {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: const Text(""),
-                                    content: const TextField(
-                                      decoration: InputDecoration(
-                                        hintText: "Введите название группы",
-                                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: TextButton(
+                              style: TextButton.styleFrom(
+                                backgroundColor:
+                                Theme.of(context).colorScheme.primary,
+                              ),
+                              onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: const Text("Группа"),
+                                        content: const TextField(
+                                          decoration: InputDecoration(
+                                            hintText: "Введите название группы",
+                                          ),
+                                        ),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Text("Добавить"),
+                                          ),
+                                        ],
+                                      );
+                                    });
+                              },
+                              child: Text(
+                                '+ Добавить группу',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(
+                                      color:
+                                          Theme.of(context).colorScheme.onPrimary,
                                     ),
-                                    actions: <Widget>[
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: const Text("Добавить"),
-                                      ),
-                                    ],
-                                  );
-                                });
-                          },
-                          child: Text(
-                            '+ Добавить группу',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
-                                ),
-                          )),
+                              )),
+                        ),
+                      ),
                       Card(
                         //color: Theme.of(context).colorScheme.secondary,
                         shape: RoundedRectangleBorder(

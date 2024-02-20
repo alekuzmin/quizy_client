@@ -45,4 +45,11 @@ abstract class AppApi{
   Future<dynamic> createQuiz(String name);
 
   Future<dynamic> deleteQuiz(String id);
+
+  Future<dynamic> fetchQuestions(String quizId);
+
+  Future<dynamic> addQuestion({
+    required String text,
+    required String quizId
+  });
 }

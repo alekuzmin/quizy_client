@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:quizy/app/ui/components/app_dialog.dart';
 import 'package:quizy/feature/auth/ui/settings_screen.dart';
 import 'package:quizy/feature/quiz/domain/state/quiz_cubit.dart';
@@ -8,6 +9,8 @@ import 'package:quizy/feature/quiz/ui/quiz_list.dart';
 import '../../../app/ui/components/app_drawer.dart';
 import '../../auth/domain/auth_state/auth_cubit.dart';
 import '../../auth/domain/entities/user_entity/user_entity.dart';
+import '../../quiz/ui/detail_quiz_screen.dart';
+import '../../quiz/ui/detail_quiz_screen_edit_status.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key, required this.userEntity});
@@ -25,7 +28,8 @@ class MainScreen extends StatelessWidget {
                       color: Theme.of(context).colorScheme.onPrimary,
                     )),
             backgroundColor: Theme.of(context).colorScheme.primary,
-            iconTheme: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
+            iconTheme:
+                IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
             actions: [
               IconButton(
                   onPressed: () {
@@ -62,73 +66,192 @@ class MainScreen extends StatelessWidget {
                   //scrollDirection: Axis.horizontal,
                   child: Column(
                     //mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    //crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
-                      Align(
-                        alignment: AlignmentDirectional.center,
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: OverflowBar(
-                            spacing: 1,
-                            overflowAlignment: OverflowBarAlignment.start,
-                            children: <Widget>[
-                              TextButton(
-                                  onPressed: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (context) => AppDialog(
-                                            value1: "Название опроса",
-                                            onPressed: (value1) {
-                                              context
-                                                  .read<QuizCubit>()
-                                                  .createQuiz(value1);
-                                            }));
-                                  },
-                                  style: TextButton.styleFrom(
-                                    backgroundColor:
-                                        Theme.of(context).colorScheme.primary,
-                                    shape:
-                                        const CircleBorder(side: BorderSide.none),
-                                  ),
-                                  child: Text(
-                                    '+',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleLarge!
-                                        .copyWith(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onPrimary,
-                                        ),
-                                  )),
-                              const TextButton(
-                                onPressed: null,
-                                child: Text('ВСЕ'),
-                              ),
-                              TextButton(
-                                child: const Text('ОЖИДАЮТ'),
-                                onPressed: () {},
-                              ),
-                              TextButton(
-                                child: const Text('АКТИВНЫЕ'),
-                                onPressed: () {},
-                              ),
-                              TextButton(
-                                child: const Text('ЗАВЕРШЕННЫЕ'),
-                                onPressed: () {},
-                              ),
-                            ],
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: OverflowBar(
+                              spacing: 1,
+                              overflowAlignment: OverflowBarAlignment.start,
+                              children: <Widget>[
+                                TextButton(
+                                    onPressed: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (context) => AppDialog(
+                                              value1: "Название опроса",
+                                              onPressed: (value1) {
+                                                context
+                                                    .read<QuizCubit>()
+                                                    .createQuiz(value1);
+                                              }));
+                                    },
+                                    style: TextButton.styleFrom(
+                                      backgroundColor:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                    child: Text(
+                                      '+ Добавить опрос',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge!
+                                          .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary,
+                                          ),
+                                    )),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                      const QuizList(),
+                      ListView(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      const DetailQuizScreenEditStatus()));
+                            },
+                            child: Card(
+                              //color: Theme.of(context).colorScheme.secondary,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Column(
+                                //mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    //mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.all(16),
+                                        child: Text("Опрос удовлетворенности",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge!
+                                                .copyWith(
+                                                  color: Colors.black54,
+                                                )
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 16),
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                              color: Colors.redAccent,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(8.0))
+                                          ),
+                                          child: const Padding(
+                                              padding: EdgeInsets.all(8.0),
+                                              child: Text("ACTIVE")
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: LinearPercentIndicator(
+                                          width: 140.0,
+                                          lineHeight: 18.0,
+                                          percent: 0.6,
+                                          leading: Text("Пройдено:", style: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall
+                                              ?.copyWith(
+                                            color: Colors.black54,)),
+                                          center: const Text("60.0%"),
+                                          backgroundColor: Colors.grey,
+                                          progressColor: Colors.orange,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                  const DetailQuizScreenEditStatus()));
+                            },
+                            child: Card(
+                              //color: Theme.of(context).colorScheme.secondary,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Column(
+                                //mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    //mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                        const EdgeInsets.all(16),
+                                        child: Text("Опрос настроения",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge!
+                                                .copyWith(
+                                              color: Colors.black54,
+                                            )),
+                                      ),
+
+
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 16,bottom: 16),
+                                        child: Container(
+                                            decoration: const BoxDecoration(
+                                                color: Colors.orange,
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(8.0))
+                                            ),
+                                            child: const Padding(
+                                              padding: EdgeInsets.all(8.0),
+                                              child: Text("INACTIVE"),
+                                            )),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+
+                        ],
+                      ),
+                      //const QuizList(),
                     ],
                   ),
                 ),
               ),
             ),
-          )
-      ),
+          )),
     );
   }
 }

@@ -17,6 +17,7 @@ class QuizList extends StatelessWidget {
       builder: (context, state) {
         if(state.quizList.isNotEmpty){
           return ListView.builder(
+              scrollDirection: Axis.vertical,
             shrinkWrap: true,
               itemCount: state.quizList.length,
               itemBuilder: (context, index) {

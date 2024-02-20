@@ -23,11 +23,11 @@ class AppDrawer extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white70),
             ),
           ),
-          ListTile(
-            leading: const Icon(Icons.quiz),
-            title: const Text("Опросы"),
-            onTap: () {},
-          ),
+          // ListTile(
+          //   leading: const Icon(Icons.quiz),
+          //   title: const Text("Опросы"),
+          //   onTap: () {},
+          // ),
           ListTile(
             leading: const Icon(Icons.supervisor_account_rounded),
             title: const Text("Cотрудники"),

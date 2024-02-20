@@ -11,61 +11,23 @@ import 'package:quizy/feature/quiz/domain/quiz_repository.dart';
 import 'package:quizy/feature/quiz/domain/state/detail_quiz/detail_quiz_cubit.dart';
 import 'package:quizy/feature/quiz/ui/detail_quiz_tab.dart';
 import 'package:quizy/feature/quiz/ui/employee_quiz_tab.dart';
+import 'package:quizy/feature/quiz/ui/history_quiz_tab.dart';
 import 'package:quizy/feature/quiz/ui/scheduler_quiz_tab.dart';
 
 import '../../main/ui/main_screen.dart';
 import '../domain/state/quiz_cubit.dart';
 
-class DetailQuizScreen extends StatelessWidget {
-  const DetailQuizScreen({super.key, required this.id});
-
-  final String id;
+class DetailQuizScreenEditStatus extends StatelessWidget {
+  const DetailQuizScreenEditStatus({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          DetailQuizCubit(locator.get<QuizRepository>(), id)..fetchQuiz(),
-      child: const _DetailQuizView(),
-    );
-  }
-}
-
-class _DetailQuizView extends StatelessWidget {
-  const _DetailQuizView();
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocConsumer<DetailQuizCubit, DetailQuizState>(
-      builder: (context, state) {
-        if (state.asyncSnapshot.connectionState ==
-            ConnectionState.waiting) {
-          return const AppLoader();
-        }
-        if (state.quizEntity != null) {
-          return _DetailQuizItem(
-            quizEntity: state.quizEntity!,
-          );
-        }
-        return const Center(
-          child: Text("Что-то пошло не так..."),
-        );
-      },
-      listener: (context, state) {
-        if (state.asyncSnapshot.hasError) {
-          AppDialog(
-            value1: ErrorEntity.fromException(state.asyncSnapshot.error)
-                .toString(),
-            onPressed: (String v1) {},
-          );
-        }
-      },
-    );
+      return const _DetailQuizItem();
   }
 }
 
 class _DetailQuizItem extends StatelessWidget {
-  const _DetailQuizItem({required this.quizEntity});
+  const _DetailQuizItem();
 
   TabBar get _tabBar => const TabBar(
     tabs: [
@@ -76,7 +38,7 @@ class _DetailQuizItem extends StatelessWidget {
     ],
   );
 
-  final QuizEntity quizEntity;
+
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +56,7 @@ class _DetailQuizItem extends StatelessWidget {
                     child: _tabBar,
                   ),
                 ),
-                title: Text(quizEntity.name,
+                title: Text("Опрос удовлетворенности",
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: Theme.of(context).colorScheme.onPrimary,
                     )
@@ -104,21 +66,16 @@ class _DetailQuizItem extends StatelessWidget {
                 IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
                 actions: [
                   IconButton(
-                    icon: const Icon(Icons.play_arrow),
+                    icon: const Icon(Icons.pause),
                     onPressed: () {},
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.save),
-                    onPressed: () {},
-                  ),
+                  // IconButton(
+                  //   icon: const Icon(Icons.save),
+                  //   onPressed: () {},
+                  // ),
                   IconButton(
                     icon: const Icon(Icons.delete),
-                    onPressed: () {
-                      context.read<DetailQuizCubit>().deleteQuiz().then((_) {
-                        context.read<QuizCubit>().fetchQuizs();
-                        Navigator.of(context).pop();
-                      });
-                    },
+                    onPressed: () {},
                   ),
                 ],
               ),
@@ -127,7 +84,7 @@ class _DetailQuizItem extends StatelessWidget {
                   DetailQuizTab(),
                   EmployeeQuizTab(),
                   SchedulerQuizTab(),
-                  Icon(Icons.directions_bike)
+                  HistoryQuizTab(),
                 ],
               ),
             ),

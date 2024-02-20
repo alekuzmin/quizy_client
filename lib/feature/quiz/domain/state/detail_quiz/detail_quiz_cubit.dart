@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:quizy/feature/quiz/domain/entity/question/question_entity.dart';
 import 'package:quizy/feature/quiz/domain/quiz_repository.dart';
 
 import '../../entity/quiz/quiz_entity.dart';

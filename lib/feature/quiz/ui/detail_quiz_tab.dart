@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizy/feature/quiz/ui/question_list.dart';
 
 
 import '../../../app/ui/components/app_dialog.dart';
+import '../domain/entity/quiz/quiz_entity.dart';
+import '../domain/state/questions/question_cubit.dart';
+import 'components/questions_list.dart';
 
 
 class DetailQuizTab extends StatelessWidget {
@@ -31,85 +36,42 @@ class DetailQuizTab extends StatelessWidget {
                 //mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: TextButton(
-                                onPressed: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) => AppDialog(
-                                          value1: "Текст вопроса",
-                                          onPressed: (value1) {
-                                            //context
-                                                //.read<QuizCubit>()
-                                                //.createQuiz(value1);
-                                          }));
-                                },
-                                style: TextButton.styleFrom(
-                                  backgroundColor:
-                                  Theme.of(context).colorScheme.primary,
-                                ),
-                                child: Text(
-                                  '+ Добавить вопрос',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge!
-                                      .copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onPrimary,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: TextButton(
+                                  onPressed: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) => AppDialog(
+                                            value1: "Текст вопроса",
+                                            onPressed: (value1) {
+                                              //context
+                                                  //.read<QuizCubit>()
+                                                  //.createQuiz(value1);
+                                            }));
+                                  },
+                                  style: TextButton.styleFrom(
+                                    backgroundColor:
+                                    Theme.of(context).colorScheme.primary,
                                   ),
-                                )
+                                  child: Text(
+                                    '+ Добавить вопрос',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge!
+                                        .copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary,
+                                    ),
+                                  )
+                              ),
                             ),
                           ),
-                  // const Row(
-                  //   children: [
-                  //     Flexible(
-                  //       child: Text("dsfsdfsdf"), // <-- Wrapped in Flexible.
-                  //     ),
-                  //   ],
-                  // )
-                  // Align(
-                  //   alignment: AlignmentDirectional.centerStart,
-                  //   child: SingleChildScrollView(
-                  //     scrollDirection: Axis.horizontal,
-                  //     child: OverflowBar(
-                  //       spacing: 1,
-                  //       overflowAlignment: OverflowBarAlignment.start,
-                  //       children: <Widget>[
-                  //         TextButton(
-                  //             onPressed: () {
-                  //               showDialog(
-                  //                   context: context,
-                  //                   builder: (context) => AppDialog(
-                  //                       value1: "Текст вопроса",
-                  //                       onPressed: (value1) {
-                  //                         //context
-                  //                             //.read<QuizCubit>()
-                  //                             //.createQuiz(value1);
-                  //                       }));
-                  //             },
-                  //             style: TextButton.styleFrom(
-                  //               backgroundColor:
-                  //               Theme.of(context).colorScheme.primary,
-                  //             ),
-                  //             child: Text(
-                  //               '+ Добавить вопрос',
-                  //               style: Theme.of(context)
-                  //                   .textTheme
-                  //                   .titleLarge!
-                  //                   .copyWith(
-                  //                 color: Theme.of(context)
-                  //                     .colorScheme
-                  //                     .onPrimary,
-                  //               ),
-                  //             )),
-                  //
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
-                  //const QuizList(),
+                  const QuestionsList(),
+                  //const QuestionList(),
                 ],
               ),
             ),

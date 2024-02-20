@@ -11,6 +11,7 @@ import 'auth_interceptor.dart';
 class DioAppApi implements AppApi {
 
   late final Dio dio;
+  late final Dio dioTokens;
 
   DioAppApi(AppConfig appConfig){
     final options = BaseOptions(
@@ -18,7 +19,11 @@ class DioAppApi implements AppApi {
       connectTimeout: 15000,
     );
     dio = Dio(options);
-    if(kDebugMode) dio.interceptors.add(PrettyDioLogger());
+    dioTokens = Dio(options);
+    if(kDebugMode) {
+      dio.interceptors.add(PrettyDioLogger());
+      dioTokens.interceptors.add(PrettyDioLogger());
+    };
     dio.interceptors.add(AuthInterceptor());
   }
 
@@ -35,7 +40,7 @@ class DioAppApi implements AppApi {
   @override
   Future<Response> refreshToken({String? refreshToken}) {
     try {
-      return dio.post("/auth/token/$refreshToken");
+      return dioTokens.post("/auth/token/$refreshToken");
     } catch (_) {
       rethrow;
     }
@@ -89,7 +94,7 @@ class DioAppApi implements AppApi {
   }
 
   @override
-  Future request(String path) {
+  Future<Response> request(String path) {
     try {
       return dio.request(path);
     } catch (_) {
@@ -98,28 +103,38 @@ class DioAppApi implements AppApi {
   }
 
   @override
-  Future fetch(RequestOptions requestOptions) {
-    return  dio.fetch(requestOptions);
+  Future<Response> fetch(RequestOptions requestOptions) {
+    return  dioTokens.fetch(requestOptions);
   }
 
   @override
-  Future fetchQuizs() {
+  Future<Response> fetchQuizs() {
     return dio.get("/data/quizs");
   }
 
   @override
-  Future fetchQuiz(String id) {
+  Future<Response> fetchQuiz(String id) {
     return dio.get("/data/quizs/$id");
   }
 
   @override
-  Future createQuiz(String name) {
+  Future<Response> createQuiz(String name) {
    return dio.post("/data/quizs", data: {"name": name, "status": "edit"});
   }
 
   @override
-  Future deleteQuiz(String id) {
+  Future<Response> deleteQuiz(String id) {
     return dio.delete("/data/quizs/$id");
+  }
+
+  @override
+  Future<Response> fetchQuestions(String quizId) {
+      return dio.get("/data/question/$quizId");
+  }
+
+  @override
+  Future<Response> addQuestion({String? text, String? quizId}) {
+    return dio.post("/data/question", data: {"text": text, "quizId": quizId});
   }
   
 }
