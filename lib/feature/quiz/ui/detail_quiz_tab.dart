@@ -1,13 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizy/app/ui/components/app_dialog_question.dart';
-import 'package:quizy/feature/quiz/ui/question_list.dart';
 
-
-import '../../../app/ui/components/app_dialog.dart';
-import '../domain/entity/quiz/quiz_entity.dart';
-import '../domain/state/questions/question_cubit.dart';
 import 'components/questions_list.dart';
 
 

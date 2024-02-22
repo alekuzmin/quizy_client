@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizy/feature/quiz/ui/components/question.dart';
 
-import '../detail_quiz_screen_active_status.dart';
 
 class QuestionsList extends StatelessWidget{
   const QuestionsList({super.key});

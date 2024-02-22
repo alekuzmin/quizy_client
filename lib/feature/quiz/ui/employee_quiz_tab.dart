@@ -1,13 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../auth/ui/employee_screen.dart';
 
-import '../../../app/ui/components/app_dialog.dart';
 
-
-class EmployeeQuizTab extends StatelessWidget {
+class EmployeeQuizTab extends StatefulWidget {
   const EmployeeQuizTab({super.key});
 
+  @override
+  State<StatefulWidget> createState() => _EmployeeQuizTab();
+}
+
+
+class _EmployeeQuizTab extends State<EmployeeQuizTab>{
+
+  bool e1 = false;
+  bool e2 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,30 +39,24 @@ class EmployeeQuizTab extends StatelessWidget {
               children: <Widget>[
                 Align(
                   alignment: AlignmentDirectional.centerStart,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: OverflowBar(
-                      spacing: 1,
-                      overflowAlignment: OverflowBarAlignment.start,
-                      children: <Widget>[
-                        TextButton(
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextButton(
                             onPressed: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) => AppDialog(
-                                      value1: "Выбрать группу сотрудников",
-                                      onPressed: (value1) {
-                                        //context
-                                        //.read<QuizCubit>()
-                                        //.createQuiz(value1);
-                                      }));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const EmployeeScreen(),
+                                  ));
                             },
                             style: TextButton.styleFrom(
                               backgroundColor:
                               Theme.of(context).colorScheme.primary,
                             ),
                             child: Text(
-                              '+ добавить группу сотрудников',
+                              'Настроить группы',
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge!
@@ -64,8 +66,85 @@ class EmployeeQuizTab extends StatelessWidget {
                                     .onPrimary,
                               ),
                             )),
-                      ],
-                    ),
+                      ),
+
+                    ],
+                  ),
+
+                ),
+                Card(
+                  //color: Theme.of(context).colorScheme.secondary,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Row(
+                    //mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        //mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Checkbox(
+                            isError: false,
+                            value: e1,
+                            onChanged: (bool? value) {
+                              setState(
+                                    () {
+                                  e1 = value!;
+                                },
+                              );
+                            },
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16),
+                            child: Text("Все сотрудники (68)",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(
+                                  color: Colors.black54,
+                                )),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Card(
+                  //color: Theme.of(context).colorScheme.secondary,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Row(
+                    //mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+
+                        //mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Checkbox(
+                            isError: false,
+                            value: e2,
+                            onChanged: (bool? value) {
+                              setState(
+                                    () {
+                                  e2 = value!;
+                                },
+                              );
+                            },
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16),
+                            child: Text("Разработчики (23)",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(
+                                  color: Colors.black54,
+                                )),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
                 //const QuizList(),
@@ -76,5 +155,7 @@ class EmployeeQuizTab extends StatelessWidget {
       ),
     );
   }
+
+
 
 }

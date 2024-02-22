@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:quizy/feature/quiz/ui/components/history_list.dart';
-
-
-import '../../../app/ui/components/app_dialog.dart';
 
 
 class HistoryQuizTab extends StatelessWidget {

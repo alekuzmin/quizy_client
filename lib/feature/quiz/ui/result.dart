@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizy/feature/quiz/ui/components/result/quiz_result_chart_tab.dart';
 import 'package:quizy/feature/quiz/ui/components/result/quiz_result_tab.dart';
-import 'package:quizy/feature/quiz/ui/components/result/save_to_file.dart';
 
 
 class Result extends StatelessWidget{
