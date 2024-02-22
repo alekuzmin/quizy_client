@@ -1,15 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:quizy/feature/quiz/ui/components/history_list.dart';
+import 'package:quizy/feature/quiz/ui/components/result/user_list.dart';
 
-
-import '../../../app/ui/components/app_dialog.dart';
-
-
-class HistoryQuizTab extends StatelessWidget {
-  const HistoryQuizTab({super.key});
-
+class QuizResultTab extends StatelessWidget{
+  const QuizResultTab({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +27,8 @@ class HistoryQuizTab extends StatelessWidget {
                 //mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  HistoryList(),
+                  UserList()
+                  //HistoryList(),
                   //const QuestionList(),
                 ],
               ),
@@ -42,6 +37,7 @@ class HistoryQuizTab extends StatelessWidget {
         ),
       ),
     );
+
   }
 
 }

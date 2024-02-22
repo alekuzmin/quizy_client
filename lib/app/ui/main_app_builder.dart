@@ -32,6 +32,7 @@ class MainAppBuilder implements AppBuilder {
               labelStyle: TextStyle(color: Colors.black54), // color for text
               indicator: UnderlineTabIndicator(borderSide: BorderSide(color: Colors.blue, width: 4),)
           ),
+          tooltipTheme: const TooltipThemeData(preferBelow: false),
       ),
 
       debugShowCheckedModeBanner: false,

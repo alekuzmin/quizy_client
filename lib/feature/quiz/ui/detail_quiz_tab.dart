@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizy/app/ui/components/app_dialog_question.dart';
 import 'package:quizy/feature/quiz/ui/question_list.dart';
 
 
@@ -44,13 +45,15 @@ class DetailQuizTab extends StatelessWidget {
                                   onPressed: () {
                                     showDialog(
                                         context: context,
-                                        builder: (context) => AppDialog(
+                                        builder: (context) => AppDialogQuestion(
                                             value1: "Текст вопроса",
                                             onPressed: (value1) {
                                               //context
                                                   //.read<QuizCubit>()
                                                   //.createQuiz(value1);
-                                            }));
+                                            },
+                                            )
+                                    );
                                   },
                                   style: TextButton.styleFrom(
                                     backgroundColor:

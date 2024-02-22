@@ -17,8 +17,8 @@ import 'package:quizy/feature/quiz/ui/scheduler_quiz_tab.dart';
 import '../../main/ui/main_screen.dart';
 import '../domain/state/quiz_cubit.dart';
 
-class DetailQuizScreenEditStatus extends StatelessWidget {
-  const DetailQuizScreenEditStatus({super.key});
+class DetailQuizScreenActiveStatus extends StatelessWidget {
+  const DetailQuizScreenActiveStatus({super.key});
 
   @override
   Widget build(BuildContext context) {

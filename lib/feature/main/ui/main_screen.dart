@@ -10,7 +10,7 @@ import '../../../app/ui/components/app_drawer.dart';
 import '../../auth/domain/auth_state/auth_cubit.dart';
 import '../../auth/domain/entities/user_entity/user_entity.dart';
 import '../../quiz/ui/detail_quiz_screen.dart';
-import '../../quiz/ui/detail_quiz_screen_edit_status.dart';
+import '../../quiz/ui/detail_quiz_screen_active_status.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key, required this.userEntity});
@@ -118,7 +118,7 @@ class MainScreen extends StatelessWidget {
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
-                                      const DetailQuizScreenEditStatus()));
+                                      const DetailQuizScreenActiveStatus()));
                             },
                             child: Card(
                               //color: Theme.of(context).colorScheme.secondary,
@@ -191,7 +191,7 @@ class MainScreen extends StatelessWidget {
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
-                                  const DetailQuizScreenEditStatus()));
+                                  const DetailQuizScreenActiveStatus()));
                             },
                             child: Card(
                               //color: Theme.of(context).colorScheme.secondary,
@@ -227,7 +227,7 @@ class MainScreen extends StatelessWidget {
                                         padding: const EdgeInsets.only(left: 16,bottom: 16),
                                         child: Container(
                                             decoration: const BoxDecoration(
-                                                color: Colors.orange,
+                                                color: Colors.grey,
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(8.0))
                                             ),
