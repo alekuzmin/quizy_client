@@ -4,12 +4,10 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:quizy/app/ui/components/app_dialog.dart';
 import 'package:quizy/feature/auth/ui/settings_screen.dart';
 import 'package:quizy/feature/quiz/domain/state/quiz_cubit.dart';
-import 'package:quizy/feature/quiz/ui/quiz_list.dart';
 
 import '../../../app/ui/components/app_drawer.dart';
 import '../../auth/domain/auth_state/auth_cubit.dart';
 import '../../auth/domain/entities/user_entity/user_entity.dart';
-import '../../quiz/ui/detail_quiz_screen.dart';
 import '../../quiz/ui/detail_quiz_screen_active_status.dart';
 
 class MainScreen extends StatelessWidget {
@@ -238,6 +236,79 @@ class MainScreen extends StatelessWidget {
                                       ),
                                     ],
                                   )
+                                ],
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                  const DetailQuizScreenActiveStatus()));
+                            },
+                            child: Card(
+                              //color: Theme.of(context).colorScheme.secondary,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Column(
+                                //mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    //mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                        const EdgeInsets.all(16),
+                                        child: Text("Новогодний опрос",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge!
+                                                .copyWith(
+                                              color: Colors.black54,
+                                            )
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 16),
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                              color: Colors.greenAccent,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(8.0))
+                                          ),
+                                          child: const Padding(
+                                              padding: EdgeInsets.all(8.0),
+                                              child: Text("Done")
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: LinearPercentIndicator(
+                                          width: 140.0,
+                                          lineHeight: 18.0,
+                                          percent: 1.0,
+                                          leading: Text("Пройдено:", style: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall
+                                              ?.copyWith(
+                                            color: Colors.black54,)),
+                                          center: const Text("100.0%"),
+                                          backgroundColor: Colors.grey,
+                                          progressColor: Colors.green,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+
                                 ],
                               ),
                             ),

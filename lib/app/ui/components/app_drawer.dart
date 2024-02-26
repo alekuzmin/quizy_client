@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizy/feature/quiz/ui/components/archive/archive.dart';
 
 import '../../../feature/auth/domain/auth_state/auth_cubit.dart';
 import '../../../feature/auth/ui/employee_screen.dart';
@@ -47,7 +48,13 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.archive),
             title: const Text("Архив"),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Archive(),
+                  ));
+            },
           ),
           ListTile(
             leading: const Icon(Icons.settings),

@@ -147,6 +147,113 @@ class _EmployeeQuizTab extends State<EmployeeQuizTab>{
                     ],
                   ),
                 ),
+                Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextButton(
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text("Поиск"),
+                                      content: const TextField(
+                                        decoration: InputDecoration(
+                                          hintText: "Введите данные для поиска",
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: const Text("Найти"),
+                                        ),
+                                      ],
+                                    );
+                                  });
+                            },
+                            style: TextButton.styleFrom(
+                              backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                            ),
+                            child: Text(
+                              '+ Добавить сотрудника',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onPrimary,
+                              ),
+                            )),
+                      ),
+
+                    ],
+                  ),
+
+                ),
+
+                Card(
+                  //color: Theme.of(context).colorScheme.secondary,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                  child: Row(
+                    //mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16),
+                        child: Text("Петрова Мария Ивановна",
+                            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              color: Colors.black54,
+                            )),
+                      ),
+                      const Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 16),
+                          child: Icon(
+                            Icons.delete,
+                            color: Colors.grey,
+                            size: 30.0,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Card(
+                  //color: Theme.of(context).colorScheme.secondary,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                  child: Row(
+                    //mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16),
+                        child: Text("Иванов Иван Иванович",
+                            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              color: Colors.black54,
+                            )),
+                      ),
+                      const Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 16),
+                          child: Icon(
+                            Icons.delete,
+                            color: Colors.grey,
+                            size: 30.0,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
                 //const QuizList(),
               ],
             ),

@@ -59,7 +59,7 @@ class Employees extends StatelessWidget {
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             },
-                                            child: const Text("Добавить"),
+                                            child: const Text("Найти"),
                                           ),
                                         ],
                                       );
@@ -129,7 +129,10 @@ class _Employee extends StatelessWidget{
             alignment: Alignment.centerRight,
               child: Padding(
                 padding: EdgeInsets.only(right: 16.0),
-                child: Icon(Icons.cancel),
+                child: Icon(Icons.delete,
+                  color: Colors.grey,
+                  size: 30.0,
+                ),
               )),
         ],
       ),
