@@ -19,6 +19,7 @@ class AppDialog extends StatefulWidget {
 class _AppDialogState extends State<AppDialog> {
   final val1Controller = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  bool slider = false;
 
   @override
   void dispose() {
@@ -39,13 +40,33 @@ class _AppDialogState extends State<AppDialog> {
                 AppTextField(
                     controller: val1Controller, labelText: widget.value1),
                 const SizedBox(height: 16,),
+                Row(
+                  children: [
+                    Checkbox(
+                        isError: false,
+                        value: slider,
+                        onChanged: (bool? value) {
+                          setState(
+                                () {
+                              slider = value!;
+                            },
+                          );
+                        }),
+                    Text("анонимный опрос",
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: Colors.black54,
+                        )),
+                  ],
+                ),
+                const SizedBox(height: 16,),
                 AppTextButton(onPressed: (){
                   if(formKey.currentState?.validate() == true){
                     Navigator.pop(context);
                     widget.onPressed(val1Controller.text);
                   }
-                }, text: "Добавить",)
+                }, text: "Добавить",),
               ],
+
             ),
           ),
         ),

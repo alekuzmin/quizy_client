@@ -54,6 +54,10 @@ class _DetailQuizItem extends StatelessWidget {
                 IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
                 actions: [
                   IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () {},
+                  ),
+                  IconButton(
                     icon: const Icon(Icons.pause),
                     onPressed: () {},
                   ),

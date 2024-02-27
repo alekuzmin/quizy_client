@@ -215,6 +215,16 @@ class MainScreen extends StatelessWidget {
                                               color: Colors.black54,
                                             )),
                                       ),
+                                      const Align(
+                                        alignment: Alignment.centerRight,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(right: 16.0),
+                                          child: Icon(Icons.person_off,
+                                            color: Colors.grey,
+                                            size: 30.0,
+                                          ),
+                                        ),
+                                      ),
 
 
                                     ],
