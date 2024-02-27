@@ -32,67 +32,70 @@ class _AppDialogState extends State<AppDialogQuestion> {
   Widget build(BuildContext context) {
     return SimpleDialog(
       children: [
-        Form(
-          key: formKey,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                AppTextField(
-                    controller: val1Controller, labelText: widget.value1),
-                const SizedBox(
-                  height: 16,
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        isError: false,
-                        value: comment,
-                        onChanged: (bool? value) {
-                          setState(
-                            () {
-                              comment = value!;
-                            },
-                          );
-                        }),
-                    Text("с комментарием",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              color: Colors.black54,
-                            )),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Checkbox(
-                        isError: false,
-                        value: slider,
-                        onChanged: (bool? value) {
-                          setState(
-                                () {
-                              slider = value!;
-                            },
-                          );
-                        }),
-                    Text("со слайдером",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          color: Colors.black54,
-                        )),
-                  ],
-                ),
+        SizedBox(
+          width: 300,
+          child: Form(
+            key: formKey,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  AppTextField(
+                      controller: val1Controller, labelText: widget.value1),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Row(
+                    children: [
+                      Checkbox(
+                          isError: false,
+                          value: comment,
+                          onChanged: (bool? value) {
+                            setState(
+                              () {
+                                comment = value!;
+                              },
+                            );
+                          }),
+                      Text("с комментарием",
+                          style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                                color: Colors.black54,
+                              )),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Checkbox(
+                          isError: false,
+                          value: slider,
+                          onChanged: (bool? value) {
+                            setState(
+                                  () {
+                                slider = value!;
+                              },
+                            );
+                          }),
+                      Text("со слайдером",
+                          style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            color: Colors.black54,
+                          )),
+                    ],
+                  ),
 
-                const SizedBox(
-                  height: 16,
-                ),
-                AppTextButton(
-                  onPressed: () {
-                    if (formKey.currentState?.validate() == true) {
-                      Navigator.pop(context);
-                      widget.onPressed(val1Controller.text);
-                    }
-                  },
-                  text: "Добавить",
-                )
-              ],
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  AppTextButton(
+                    onPressed: () {
+                      if (formKey.currentState?.validate() == true) {
+                        Navigator.pop(context);
+                        widget.onPressed(val1Controller.text);
+                      }
+                    },
+                    text: "Добавить",
+                  )
+                ],
+              ),
             ),
           ),
         ),

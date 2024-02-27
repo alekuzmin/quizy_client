@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizy/feature/main/ui/main_screen_employee.dart';
 
 
 import '../domain/auth_state/auth_cubit.dart';
@@ -25,8 +26,11 @@ class SettingsScreen extends StatelessWidget {
             actions: [
               IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
-                    context.read<AuthCubit>().logOut();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MainScreenEmployee(),
+                        ));
                   },
                   icon: Icon(Icons.exit_to_app,
                       color: Theme.of(context).colorScheme.onTertiary)),

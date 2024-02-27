@@ -41,7 +41,7 @@ class MainScreen extends StatelessWidget {
                   icon: CircleAvatar(
                     backgroundColor: Colors.orangeAccent,
                     child: Text(
-                      "${userEntity.lastName.split("").first}${userEntity.firstName.split("").first}",
+                      "${userEntity.firstName.split("").first}${userEntity.lastName.split("").first}",
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   )),
