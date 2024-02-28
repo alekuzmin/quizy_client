@@ -133,7 +133,8 @@ class _Employee extends StatelessWidget{
                   color: Colors.grey,
                   size: 30.0,
                 ),
-              )),
+              ),
+          ),
         ],
       ),
     );
